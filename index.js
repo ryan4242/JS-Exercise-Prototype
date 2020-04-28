@@ -108,18 +108,20 @@ Car.prototype.drive = function(distance) {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Baby(favoriteToy) {
+function Baby(name, age, favoriteToy) {
+  Person.apply(this, [name, age, favoriteToy]);
   this.favoriteToy = favoriteToy;
-  // Step 1, binding 'this' to Parent with '.call'
-  Person.call(this, favoriteToy);
 }
-// Step 2, copy Parent's prototype to Child's prototype
+
 Baby.prototype = Object.create(Person.prototype);
 
-Baby.prototype.play = function(favoriteToy) {
-  return `Playing with ${favoriteToy}`
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`
 }
 
+let sam = new Baby('Sam', 3, 'Hot Wheels');
+
+console.log(sam.play);
 /* 
   TASK 4
 
