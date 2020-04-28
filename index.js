@@ -107,18 +107,27 @@ Car.prototype.drive = function(distance) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
 
+function Baby(favoriteToy) {
+  this.favoriteToy = favoriteToy;
+  // Step 1, binding 'this' to Parent with '.call'
+  Person.call(this, favoriteToy);
+}
+// Step 2, copy Parent's prototype to Child's prototype
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function(favoriteToy) {
+  return `Playing with ${favoriteToy}`
 }
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window/Global Object binding is what the 'this' keywords default setting is. this looks at the window object.
+  2. Implicit binding is when there is a method in  an object/contstructor. This looks at the object the method was called in. 
+  3. New binding is used in constructors. The this keyword looks at the specific object in the instance the constructor is called.
+  4. Explicit binding is when .bind, .call, or .apply is used. They are used to manually set the this keyword.
 */
 
 
