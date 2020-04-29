@@ -119,9 +119,6 @@ Baby.prototype.play = function() {
   return `Playing with ${this.favoriteToy}`
 }
 
-let sam = new Baby('Sam', 3, 'Hot Wheels');
-
-console.log(sam.play);
 /* 
   TASK 4
 
